@@ -1,0 +1,21 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: infrastructure/api.Dockerfile
+    environment:
+      SKRYFWYS_DATABASE_URL: sqlite:///./data/skryfwys.db
+      SKRYFWYS_PRIVACY_MODE: local
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+  web:
+    build:
+      context: .
+      dockerfile: infrastructure/web.Dockerfile
+    ports:
+      - "4173:4173"
+    depends_on:
+      - api
+

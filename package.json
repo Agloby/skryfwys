@@ -1,0 +1,14 @@
+{
+  "name": "skryfwys",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "powershell -ExecutionPolicy Bypass -File ./scripts/dev.ps1",
+    "test": "powershell -ExecutionPolicy Bypass -File ./scripts/test.ps1",
+    "lint": "python -m ruff check . && npm run lint --prefix apps/web",
+    "typecheck": "npm run typecheck --prefix apps/web",
+    "build": "npm run build --prefix apps/web",
+    "evaluate": "python -m services.language_engine.evaluation"
+  }
+}
+
