@@ -1,0 +1,27 @@
+{
+    email {$SKRYFWYS_ACME_EMAIL}
+    admin off
+}
+
+{$SKRYFWYS_DOMAIN} {
+    encode zstd gzip
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+
+    reverse_proxy web:4173 {
+        health_uri /healthz
+        health_interval 30s
+        health_timeout 4s
+    }
+
+    log {
+        output stdout
+        format json
+    }
+}
+

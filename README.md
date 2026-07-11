@@ -8,6 +8,7 @@ Skryfwys is a privacy-conscious Afrikaans writing assistant built around a deter
 - Deterministic Afrikaans spell/style checking with original seed data
 - SQLite-backed personal dictionary support
 - React + Vite web editor for checking text and applying suggestions
+- Manifest V3 browser-extension safety core and Office task-pane foundation
 - Pytest and Vitest coverage for the core slice
 - Evaluation harness with original Afrikaans test data
 
@@ -50,16 +51,18 @@ Skryfwys is a privacy-conscious Afrikaans writing assistant built around a deter
 - `python -m services.language_engine.evaluation`
 - `npm run test --prefix apps/web`
 - `npm run build --prefix apps/web`
+- `npm test --prefix apps/browser-extension`
+- `npm test --prefix apps/office-addin`
 
 ## Project structure
 
 ```text
 apps/
   web/                 React editor
-  browser-extension/   planned
-  office-addin/        planned
-  desktop/             planned
-  ios/                 planned
+  browser-extension/   Manifest V3 local-checking client foundation
+  office-addin/        Word/Outlook task-pane foundation
+  desktop/             PWA desktop notes
+  ios/                 iOS integration notes
 services/
   api/                 FastAPI service
   language_engine/     deterministic checker and evaluation tools
@@ -75,5 +78,7 @@ tests/                 backend unit and integration tests
 
 ## Current status
 
-The repository is at Milestones 1 to 3 for a first vertical slice. Browser, Office, and iOS integrations are scaffolded and documented, but not yet implemented as shippable clients.
-
+The repository contains a verified first vertical slice: deterministic backend,
+web editor, browser-extension safety core, Office task-pane foundation, scripts,
+docs, and deployment scaffolding. Browser, Office, and iOS are not signed store
+releases; their target-platform review and distribution work remains documented.

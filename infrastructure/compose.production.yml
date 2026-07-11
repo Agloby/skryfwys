@@ -1,0 +1,112 @@
+name: skryfwys
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: skryfwys
+      POSTGRES_USER: skryfwys
+      POSTGRES_PASSWORD: ${SKRYFWYS_POSTGRES_PASSWORD:?Set SKRYFWYS_POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U skryfwys -d skryfwys"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - backend
+
+  api:
+    build:
+      context: ..
+      dockerfile: infrastructure/api.Dockerfile
+    restart: unless-stopped
+    environment:
+      SKRYFWYS_ENVIRONMENT: production
+      SKRYFWYS_DATABASE_URL: postgresql+psycopg://skryfwys:${SKRYFWYS_POSTGRES_PASSWORD}@postgres:5432/skryfwys
+      SKRYFWYS_CORS_ORIGINS: https://${SKRYFWYS_DOMAIN:?Set SKRYFWYS_DOMAIN}
+      SKRYFWYS_TRUSTED_HOSTS: ${SKRYFWYS_DOMAIN},api,localhost
+      SKRYFWYS_DIAGNOSTICS_ENABLED: "false"
+      FORWARDED_ALLOW_IPS: 172.29.0.0/24
+      AI_PROVIDER: ${AI_PROVIDER:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_BASE_URL: ${AI_BASE_URL:-https://api.openai.com}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      AI_TIMEOUT_SECONDS: ${AI_TIMEOUT_SECONDS:-20}
+      AI_MAX_INPUT_CHARACTERS: ${AI_MAX_INPUT_CHARACTERS:-20000}
+      AI_DAILY_BUDGET: ${AI_DAILY_BUDGET:-0}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - backend
+      - frontend
+
+  web:
+    build:
+      context: ..
+      dockerfile: infrastructure/web.Dockerfile
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+      - /var/cache/nginx:size=16m,mode=0755,uid=101,gid=101
+      - /var/run:size=4m,mode=0755,uid=101,gid=101
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - frontend
+
+  proxy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    environment:
+      SKRYFWYS_DOMAIN: ${SKRYFWYS_DOMAIN:?Set SKRYFWYS_DOMAIN}
+      SKRYFWYS_ACME_EMAIL: ${SKRYFWYS_ACME_EMAIL:?Set SKRYFWYS_ACME_EMAIL}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - frontend
+
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  backend:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.29.0.0/24
