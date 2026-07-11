@@ -1,0 +1,31 @@
+:root { color-scheme: light; font: 14px/1.45 system-ui, sans-serif; color: #172521; background: #f4f8f6; }
+body { margin: 0; }
+main { padding: 18px; }
+header { display: flex; align-items: center; gap: 11px; margin-bottom: 18px; }
+.logo { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 12px; color: #fff; background: #176b5b; font-weight: 800; }
+h1 { margin: 0; color: #174f46; font-size: 21px; }
+header p { margin: 2px 0 0; color: #526660; font-size: 12px; }
+h2 { margin: 0 0 10px; font-size: 16px; }
+section, details { margin: 12px 0; padding: 14px; border: 1px solid #d2e1dc; border-radius: 12px; background: #fff; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+label { display: grid; gap: 5px; margin: 8px 0; font-weight: 650; }
+select, input { width: 100%; min-height: 40px; padding: 7px 8px; border: 1px solid #91aaa3; border-radius: 7px; background: #fff; font: inherit; }
+button { min-height: 40px; padding: 8px 11px; border: 1px solid #176b5b; border-radius: 8px; color: #174f46; background: #fff; font: 650 13px system-ui, sans-serif; cursor: pointer; }
+button.primary { width: 100%; margin-top: 10px; color: #fff; background: #176b5b; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #efb82e; outline-offset: 2px; }
+#status { min-height: 20px; margin-bottom: 0; color: #36534b; }
+#status.error { color: #8d251d; }
+.cloud-notice { margin: 10px 0; padding: 10px; border: 2px solid #bc7923; border-radius: 8px; background: #fff7e8; }
+.cloud-notice p { margin: 5px 0; }
+label.consent { display: flex; align-items: flex-start; gap: 8px; font-weight: 600; }
+label.consent input { width: 18px; min-height: 18px; margin-top: 2px; }
+.issue { margin: 10px 0; padding: 12px; border-left: 4px solid #d29022; border-radius: 7px; background: #fbf9f1; }
+.severity-error { border-left-color: #b44337; }
+.severity-info { border-left-color: #397aa2; }
+.issue p { margin: 4px 0; }
+.meta { color: #526660; font-size: 11px; letter-spacing: .03em; text-transform: uppercase; }
+code { display: inline-block; margin: 4px 0 9px; padding: 2px 5px; border-radius: 4px; background: #fff0ed; }
+.suggestions { display: flex; flex-wrap: wrap; gap: 7px; }
+summary { cursor: pointer; font-weight: 700; }
+@media (max-width: 300px) { .grid { grid-template-columns: 1fr; } }

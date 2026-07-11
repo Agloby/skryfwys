@@ -1,0 +1,15 @@
+:root { color-scheme: light; font: 14px/1.4 system-ui, sans-serif; color: #172521; background: #f6faf8; }
+body { margin: 0; min-width: 310px; }
+main { padding: 16px; }
+header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+header span { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 12px; color: #fff; background: #176b5b; font-weight: 800; }
+h1 { margin: 0; font-size: 20px; }
+.toggle { display: flex; align-items: center; gap: 9px; min-height: 38px; }
+input { width: 18px; height: 18px; accent-color: #176b5b; }
+.privacy { padding: 9px 10px; border-radius: 8px; color: #174f46; background: #e5f3ef; }
+button { width: 100%; min-height: 42px; margin-top: 8px; border: 1px solid #9bb7af; border-radius: 9px; color: #173c35; background: #fff; font: 600 14px system-ui, sans-serif; cursor: pointer; }
+button.primary { border-color: #176b5b; color: #fff; background: #176b5b; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+button:focus-visible, input:focus-visible { outline: 3px solid #efb82e; outline-offset: 2px; }
+#status { min-height: 20px; margin: 10px 0 0; color: #7c241d; }
+

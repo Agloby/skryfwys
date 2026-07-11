@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="af">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://appsforoffice.microsoft.com; script-src 'self' https://appsforoffice.microsoft.com; style-src 'self'; connect-src 'self' https:; img-src 'self' data:">
+    <title>Skryfwys</title>
+    <link rel="stylesheet" href="taskpane.css">
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  </head>
+  <body>
+    <main>
+      <header><span class="logo" aria-hidden="true">Sk</span><div><h1>Skryfwys</h1><p id="host-name">Office word gelaai…</p></div></header>
+      <section class="controls" aria-labelledby="check-heading">
+        <h2 id="check-heading">Geselekteerde teks</h2>
+        <div class="grid">
+          <label>Privaatheid
+            <select id="privacy-mode">
+              <option value="local">Plaaslik</option>
+              <option value="private-server">Private bediener</option>
+              <option value="cloud-ai">Wolk-KI</option>
+            </select>
+          </label>
+          <label>Styl
+            <select id="document-mode">
+              <option value="general">Algemeen</option>
+              <option value="formal">Formeel</option>
+              <option value="informal">Informeel</option>
+              <option value="academic">Akademies</option>
+              <option value="professional">Professioneel</option>
+            </select>
+          </label>
+        </div>
+        <div id="cloud-notice" class="cloud-notice" hidden>
+          <strong>Wolk-KI-privaatheidskennisgewing</strong>
+          <p>Die gekose teks kan deur die eksterne KI-verskaffer verwerk word wat op jou Skryfwys-bediener ingestel is. Skryfwys wys nie tans die verskaffernaam in hierdie taakvenster nie.</p>
+          <label class="consent"><input id="cloud-consent" type="checkbox"> Ek verstaan en stem uitdruklik tot hierdie wolk-KI-kontrole in.</label>
+        </div>
+        <button id="check" class="primary" type="button">Kontroleer</button>
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading">Voorstelle</h2>
+        <div id="results"></div>
+      </section>
+      <details>
+        <summary>Bedienerinstellings</summary>
+        <label>HTTPS API-adres (leeg = dieselfde oorsprong)
+          <input id="api-url" type="url" spellcheck="false" placeholder="https://skryfwys.example.com">
+        </label>
+        <button id="save-settings" type="button">Stoor instellings</button>
+      </details>
+    </main>
+  </body>
+</html>

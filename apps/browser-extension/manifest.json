@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Skryfwys",
+  "description": "Privaatheidsbewuste Afrikaanse skryfondersteuning.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "109",
+  "incognito": "not_allowed",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": [
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Skryfwys",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "check-current-field": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Kontroleer die huidige veld"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["lib/safety.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+

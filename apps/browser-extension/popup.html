@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="af">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skryfwys</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header><span aria-hidden="true">Sk</span><h1>Skryfwys</h1></header>
+      <label class="toggle"><input id="enabled" type="checkbox"> Skryfwys aangeskakel</label>
+      <label class="toggle"><input id="site-enabled" type="checkbox"> Gebruik op hierdie webwerf</label>
+      <p id="privacy" class="privacy"></p>
+      <button id="check" class="primary" type="button">Kontroleer huidige veld</button>
+      <button id="editor" type="button">Maak volledige redigeerder oop</button>
+      <button id="options" type="button">Instellings</button>
+      <p id="status" role="status"></p>
+    </main>
+    <script src="lib/safety.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
+

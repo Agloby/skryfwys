@@ -1,0 +1,23 @@
+SKRYFWYS OFFICE MANUAL SMOKE TEST
+
+1. Select only the first sentence and check it:
+   Die kontrakteur het die werk vol tooi.
+   Expected: at least the known split-word issue when the deterministic engine supports it.
+
+2. Select this Unicode sentence and verify the shown range/replacement:
+   😀 Ons sal dit nie more kan voltooi nie.
+   Expected: the emoji remains unchanged; any correction must replace only its matching text.
+
+3. Check stale-selection protection:
+   - Select and check “Ek het gister winkel toe gegaan.”
+   - Edit the selection in Word before clicking a suggestion.
+   - Expected: Skryfwys refuses the stale correction.
+
+4. Check Word undo:
+   - Apply one suggestion.
+   - Press Ctrl+Z.
+   - Expected: Word restores the prior text.
+
+5. Outlook compose foundation:
+   - In a new message, select a sentence and check it.
+   - Expected: applying a suggestion replaces only the verified selected text.

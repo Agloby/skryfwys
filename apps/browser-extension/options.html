@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="af">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skryfwys-instellings</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main>
+      <h1>Skryfwys-instellings</h1>
+      <p>Tekskontrole gebeur slegs wanneer jy dit uitdruklik versoek.</p>
+      <form id="settings-form">
+        <label class="check"><input id="enabled" type="checkbox"> Skryfwys is aangeskakel</label>
+        <label class="check"><input id="local-only" type="checkbox"> Plaaslike modus (blokkeer openbare API-gashere en wolk-KI)</label>
+        <label>Privaatheidsmodus
+          <select id="privacy-mode">
+            <option value="local">Plaaslik</option>
+            <option value="private-server">Private bediener</option>
+            <option value="cloud-ai">Wolk-KI (uitdruklike toestemming)</option>
+          </select>
+        </label>
+        <label>Dokumentmodus
+          <select id="document-mode">
+            <option value="general">Algemeen</option>
+            <option value="formal">Formeel</option>
+            <option value="informal">Informeel</option>
+            <option value="academic">Akademies</option>
+            <option value="professional">Professioneel</option>
+          </select>
+        </label>
+        <label>Skryfwys API-adres
+          <input id="api-url" type="url" required spellcheck="false" placeholder="http://127.0.0.1:8000">
+        </label>
+        <label>Volledige redigeerder-adres
+          <input id="editor-url" type="url" required spellcheck="false" placeholder="http://localhost:5173">
+        </label>
+        <label>Uitgeslote webwerwe (een oorsprong per reël)
+          <textarea id="excluded" rows="7" spellcheck="false" placeholder="https://voorbeeld.co.za"></textarea>
+        </label>
+        <div class="actions">
+          <button class="primary" type="submit">Stoor instellings</button>
+          <button id="shortcuts" type="button">Verander sleutelbordkortpad</button>
+        </div>
+        <p id="status" role="status"></p>
+      </form>
+      <section aria-labelledby="privacy-heading">
+        <h2 id="privacy-heading">Privaatheid</h2>
+        <p>Die uitbreiding stoor nie gekontroleerde teks nie. 'n Afgeleë API-adres benodig 'n aparte blaaiergasheertoestemming. Cloud-AI-modus kan teks volgens jou bediener se ingestelde KI-verskaffer verwerk.</p>
+      </section>
+    </main>
+    <script src="lib/safety.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
+
