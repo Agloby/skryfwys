@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Skryfwys">
+  <rect width="512" height="512" rx="116" fill="#123c35"/>
+  <path d="M148 354c62-4 132-18 174-58 25-24 47-61 51-116-53 5-94 27-119 56-35 40-45 89-50 134" fill="none" stroke="#fffaf0" stroke-width="36" stroke-linecap="round"/>
+  <path d="M138 372h238" stroke="#e3a53b" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="347" cy="157" r="18" fill="#e3a53b"/>
+</svg>

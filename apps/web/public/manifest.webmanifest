@@ -1,0 +1,18 @@
+{
+  "name": "Skryfwys — Afrikaanse skryfassistent",
+  "short_name": "Skryfwys",
+  "description": "Privaatheidsbewuste spelling-, taal- en stylhulp vir Afrikaans.",
+  "lang": "af-ZA",
+  "start_url": "/#editor",
+  "display": "standalone",
+  "background_color": "#f6f5ef",
+  "theme_color": "#123c35",
+  "icons": [
+    {
+      "src": "/skryfwys-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
