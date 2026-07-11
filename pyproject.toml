@@ -10,15 +10,16 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
   "fastapi>=0.116,<0.117",
+  "httpx>=0.28,<0.29",
   "pydantic>=2.11,<3.0",
   "pydantic-settings>=2.10,<3.0",
+  "psycopg[binary]>=3.2,<4.0",
   "sqlalchemy>=2.0,<3.0",
   "uvicorn>=0.35,<0.36",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "httpx>=0.28,<0.29",
   "pytest>=8.4,<9.0",
   "ruff>=0.12,<0.13",
 ]
@@ -35,7 +36,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-

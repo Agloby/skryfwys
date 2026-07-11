@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "name": "Skryfwys original deterministic evaluation suite",
+    "version": 1,
+    "source": "Project-authored templates and sentences; no HAT or WAT material",
+    "licence": "MIT",
+    "offset_unit": "Unicode code points",
+    "quality_note": "Template expansion is deterministic and every expanded text must be unique. Metrics describe this transparent seed suite, not general Grammarly-level accuracy."
+  },
+  "accepted": {
+    "subjects": [
+      "Ek", "Jy", "Ons", "Hulle", "Die span", "Die gebruiker", "Die bestuurder",
+      "Die familie", "Die kinders", "Die projekspan"
+    ],
+    "predicates": [
+      "lees die dokument", "stuur die dokument vandag", "werk aan die projek",
+      "sal môre terugkom", "het die boodskap ontvang", "maak die plan duidelik",
+      "gee vandag die antwoord", "kan die probleem verstaan", "sal die werk voltooi",
+      "hou die inligting veilig"
+    ]
+  },
+  "spelling": {
+    "contexts": [
+      "Ek skryf {error} in die dokument.",
+      "Die woord {error} moet hersien word.",
+      "Ons het {error} in die boodskap gesien.",
+      "Kontroleer asseblief {error} vandag."
+    ],
+    "mapping_limit": 25
+  },
+  "grammar": [
+    {
+      "name": "repeated-word",
+      "template": "{value} sal sal die dokument lees.",
+      "values": ["Ek", "Jy", "Ons", "Hulle", "Die span", "Die gebruiker", "Die bestuurder", "Die familie", "Die kinders", "Die projekspan"],
+      "expected_rule_ids": ["AF_REPEAT_WORD_001"]
+    },
+    {
+      "name": "space-before-punctuation",
+      "template": "{value} lees die dokument , vandag.",
+      "values": ["Ek", "Jy", "Ons", "Hulle", "Die span", "Die gebruiker", "Die bestuurder", "Die familie", "Die kinders", "Die projekspan"],
+      "expected_rule_ids": ["AF_SPACE_BEFORE_PUNCT_001"]
+    },
+    {
+      "name": "space-after-punctuation",
+      "template": "{value} lees die dokument,vandag.",
+      "values": ["Ek", "Jy", "Ons", "Hulle", "Die span", "Die gebruiker", "Die bestuurder", "Die familie", "Die kinders", "Die projekspan"],
+      "expected_rule_ids": ["AF_SPACE_AFTER_PUNCT_001"]
+    },
+    {
+      "name": "repeated-punctuation",
+      "template": "{value} lees die dokument!!",
+      "values": ["Ek", "Jy", "Ons", "Hulle", "Die span", "Die gebruiker", "Die bestuurder", "Die familie", "Die kinders", "Die projekspan"],
+      "expected_rule_ids": ["AF_REPEAT_PUNCT_001"]
+    },
+    {
+      "name": "sentence-capitalization",
+      "template": "{value} lees die dokument.",
+      "values": ["ek", "jy", "ons", "hulle", "die span", "die gebruiker", "die bestuurder", "die familie", "die kinders", "die projekspan"],
+      "expected_rule_ids": ["AF_SENTENCE_CAP_001"]
+    },
+    {
+      "name": "negative-construction",
+      "template": "Ons sal die {value} nie voltooi.",
+      "values": ["dokument", "projek", "werk", "plan", "boodskap", "antwoord", "aansoek", "versoek", "faktuur", "gesprek"],
+      "expected_rule_ids": ["AF_NEGATION_001"]
+    },
+    {
+      "name": "negative-word-order",
+      "template": "Ons sal nie dit {value} nie.",
+      "values": ["vandag voltooi", "môre voltooi", "later voltooi", "nou voltooi", "graag voltooi", "vinnig voltooi", "weer voltooi", "saam voltooi", "binne voltooi", "altyd voltooi"],
+      "expected_rule_ids": ["AF_WORD_ORDER_001"]
+    },
+    {
+      "name": "past-tense",
+      "template": "Ek het {value}.",
+      "values": ["gister gaan", "gister loop", "gister doen", "gister sien", "gister skryf", "vandag gaan", "vandag loop", "vandag doen", "vandag sien", "vandag skryf"],
+      "expected_rule_ids": ["AF_PAST_TENSE_001"]
+    },
+    {
+      "name": "measurement-spacing",
+      "template": "Die pakket weeg {value}kg.",
+      "values": ["1", "2", "3", "4", "5", "10", "12", "20", "25", "50"],
+      "expected_rule_ids": ["AF_MEASUREMENT_SPACE_001"]
+    },
+    {
+      "name": "number-format",
+      "template": "Die projek kos €{value}.",
+      "values": ["1,000", "2,500", "5,000", "10,000", "12,500", "25,000", "50,000", "100,000", "250,000", "2,500,000"],
+      "expected_rule_ids": ["AF_NUMBER_FORMAT_001"]
+    }
+  ],
+  "compounds": {
+    "mapping_limit": 10,
+    "contexts": [
+      "Die {separated} is gereed.",
+      "Ons hersien die {separated} vandag.",
+      "Kontroleer die {separated} asseblief.",
+      "Die span gebruik die {separated}.",
+      "Stuur die {separated} aan my."
+    ]
+  },
+  "code_switching": {
+    "accepted_count": 25,
+    "flagged_count": 25,
+    "accepted_template": "Die span gebruik vandag {word} in dokument {index}.",
+    "flagged_template": "Ons {first} die {second} vandag in dokument {index}."
+  },
+  "formality": {
+    "terms": ["asb", "agv", "basies", "cool", "okay"],
+    "variants_per_term": 5,
+    "formal_template": "Ons gebruik {term} in formele voorbeeld {index}.",
+    "informal_template": "Ons gebruik {term} in informele gesprek {index}."
+  },
+  "construction": {
+    "count": 25,
+    "template": "Die projek gebruik die term {term} in lys {index}."
+  }
+}
+

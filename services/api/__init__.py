@@ -1,0 +1,1 @@
+"""Skryfwys FastAPI service package."""

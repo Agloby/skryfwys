@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "name": "Skryfwys original construction and quantity-surveying seed terminology",
+    "source": "Project-authored seed list based on common professional usage; disputed variants are alternatives, not definitions",
+    "licence": "MIT",
+    "locale": "af-ZA"
+  },
+  "terms": [
+    {"term": "hoeveelheidsopmeter", "alternatives": ["bourekenaar"], "category": "quantity-surveying"},
+    {"term": "bourekenaar", "alternatives": ["hoeveelheidsopmeter"], "category": "quantity-surveying"},
+    {"term": "hoeveelheidslys", "alternatives": [], "category": "quantity-surveying"},
+    {"term": "tender", "alternatives": ["aanbod"], "category": "construction"},
+    {"term": "tenderbedrag", "alternatives": ["aanbodbedrag"], "category": "construction"},
+    {"term": "kosteberaming", "alternatives": ["kosteskatting"], "category": "quantity-surveying"},
+    {"term": "voorlopige en algemene koste", "alternatives": [], "category": "quantity-surveying"},
+    {"term": "variasie", "alternatives": ["wysiging"], "category": "construction"},
+    {"term": "waardasie", "alternatives": ["waardebepaling"], "category": "quantity-surveying"},
+    {"term": "betalingssertifikaat", "alternatives": [], "category": "quantity-surveying"},
+    {"term": "kontrakbedrag", "alternatives": [], "category": "construction"},
+    {"term": "eenheidskoers", "alternatives": [], "category": "quantity-surveying"},
+    {"term": "meetstaat", "alternatives": ["metingstaat"], "category": "quantity-surveying"},
+    {"term": "bruto vloeroppervlakte", "alternatives": [], "category": "construction"},
+    {"term": "netto vloeroppervlakte", "alternatives": [], "category": "construction"},
+    {"term": "kontrakteur", "alternatives": ["aannemer"], "category": "construction"},
+    {"term": "subkontrakteur", "alternatives": ["onderaannemer"], "category": "construction"},
+    {"term": "praktiese voltooiing", "alternatives": [], "category": "construction"},
+    {"term": "finale rekening", "alternatives": [], "category": "quantity-surveying"},
+    {"term": "retensiegeld", "alternatives": ["terughoudingsgeld"], "category": "construction"},
+    {"term": "bouperseel", "alternatives": ["konstruksieterrein"], "category": "construction"},
+    {"term": "werkstaat", "alternatives": [], "category": "construction"},
+    {"term": "materiaalstaat", "alternatives": [], "category": "construction"},
+    {"term": "prysaanpassing", "alternatives": [], "category": "quantity-surveying"},
+    {"term": "tenderdokument", "alternatives": ["aanboddokument"], "category": "construction"},
+    {"term": "kontrakdokument", "alternatives": [], "category": "construction"},
+    {"term": "voorraadlys", "alternatives": [], "category": "construction"}
+  ]
+}
+

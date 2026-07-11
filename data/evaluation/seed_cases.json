@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "source": "Examples requested in the product brief, annotated with conservative intended outcomes",
+    "licence": "Project brief / repository MIT",
+    "note": "Preference does not imply grammatical error. Rules only flag tested high-confidence patterns."
+  },
+  "cases": [
+    {
+      "id": "seed-001",
+      "text": "Ek het gister winkel toe gegaan.",
+      "document_mode": "general",
+      "expected_outcome": "accepted",
+      "expected_rule_ids": [],
+      "notes": "The omitted preposition can occur idiomatically; do not call it wrong without stronger context."
+    },
+    {
+      "id": "seed-002",
+      "text": "Ek het gister na die winkel toe gegaan.",
+      "document_mode": "general",
+      "expected_outcome": "accepted",
+      "expected_rule_ids": [],
+      "notes": "Standard construction."
+    },
+    {
+      "id": "seed-003",
+      "text": "Die kontrakteur het die werk voltooi.",
+      "document_mode": "general",
+      "expected_outcome": "accepted",
+      "expected_rule_ids": [],
+      "notes": "Accepted construction terminology."
+    },
+    {
+      "id": "seed-004",
+      "text": "Die kontrakteur het die werk vol tooi.",
+      "document_mode": "general",
+      "expected_outcome": "corrected",
+      "expected_rule_ids": ["AF_COMPOUND_SPLIT_001"],
+      "expected_suggestion": "voltooi",
+      "notes": "Accidental split."
+    },
+    {
+      "id": "seed-005",
+      "text": "Ons sal dit nie môre kan voltooi nie.",
+      "document_mode": "general",
+      "expected_outcome": "accepted",
+      "expected_rule_ids": [],
+      "notes": "Complete nie ... nie construction."
+    },
+    {
+      "id": "seed-006",
+      "text": "Ons sal nie dit môre kan voltooi.",
+      "document_mode": "general",
+      "expected_outcome": "corrected",
+      "expected_rule_ids": ["AF_WORD_ORDER_001", "AF_NEGATION_001"],
+      "notes": "High-confidence word-order pattern plus missing second nie."
+    },
+    {
+      "id": "seed-007",
+      "text": "Die hoeveelheidsopmeter het die kosteberaming hersien.",
+      "document_mode": "professional",
+      "expected_outcome": "terminology-preference",
+      "expected_rule_ids": [],
+      "notes": "Accepted professional terms; bourekenaar and kosteskatting remain recorded alternatives."
+    },
+    {
+      "id": "seed-008",
+      "text": "Die hoeveelheid opmeter het die koste beraming hersien.",
+      "document_mode": "professional",
+      "expected_outcome": "corrected",
+      "expected_rule_ids": ["AF_COMPOUND_SPLIT_001"],
+      "notes": "Two known split compounds may produce two issues with the same rule ID."
+    },
+    {
+      "id": "seed-009",
+      "text": "Stuur asseblief die dokument aan my.",
+      "document_mode": "formal",
+      "expected_outcome": "accepted",
+      "expected_rule_ids": [],
+      "notes": "Appropriate in formal mode."
+    },
+    {
+      "id": "seed-010",
+      "text": "Stuur asb die dokument aan my.",
+      "document_mode": "informal",
+      "expected_outcome": "accepted-only-in-informal-mode",
+      "expected_rule_ids": [],
+      "notes": "Recognised informal abbreviation; not a spelling error."
+    },
+    {
+      "id": "seed-011",
+      "text": "Stuur asb die dokument aan my.",
+      "document_mode": "formal",
+      "expected_outcome": "flagged-as-stylistic",
+      "expected_rule_ids": ["AF_FORMALITY_001"],
+      "notes": "Style preference, not spelling."
+    },
+    {
+      "id": "seed-012",
+      "text": "Die projek kos €2 500 000.",
+      "document_mode": "general",
+      "expected_outcome": "accepted",
+      "expected_rule_ids": [],
+      "notes": "Preferred grouping style."
+    },
+    {
+      "id": "seed-013",
+      "text": "Die projek kos €2,500,000.",
+      "document_mode": "general",
+      "expected_outcome": "flagged-as-stylistic",
+      "expected_rule_ids": ["AF_NUMBER_FORMAT_001"],
+      "expected_suggestion": "€2 500 000",
+      "notes": "Understandable input; suggest Afrikaans number grouping as style."
+    }
+  ]
+}
+

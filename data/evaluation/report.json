@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-11T14:32:29.544060+00:00",
+  "runtime": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "dataset": {
+    "generated_cases": 475,
+    "seed_cases": 13,
+    "total_cases": 488,
+    "category_counts": {
+      "accepted": 100,
+      "code-switching": 50,
+      "compound": 50,
+      "construction": 25,
+      "formal-informal": 50,
+      "grammar-punctuation": 100,
+      "spelling": 100
+    },
+    "unique_generated_texts": 475
+  },
+  "metrics": {
+    "overall_issue_precision": 1.0,
+    "overall_label_recall": 1.0,
+    "spelling_precision": 1.0,
+    "spelling_recall": 1.0,
+    "suggestion_top_1_accuracy": 1.0,
+    "suggestion_top_3_accuracy": 1.0,
+    "grammar_precision": 1.0,
+    "grammar_recall": 1.0,
+    "false_positives_per_1000_words": 0.0,
+    "average_response_time_ms": 0.164,
+    "p95_response_time_ms": 0.192,
+    "maximum_response_time_ms": 2.473,
+    "ai_cost_per_1000_words": 0.0
+  },
+  "counts": {
+    "predicted_issues": 307,
+    "expected_labels": 306,
+    "matched_labels": 306,
+    "false_positive_issues": 0,
+    "offset_errors": 0,
+    "crashes": 0
+  },
+  "quality_gates": {
+    "category_minimums_met": true,
+    "zero_crashes": true,
+    "offsets_verified": true,
+    "normal_response_under_500_ms": true,
+    "no_raw_text_in_report_failures": true,
+    "no_invented_dictionary_definitions": true,
+    "all_labelled_rules_detected": true
+  },
+  "misses": [],
+  "false_positive_samples": [],
+  "crash_samples": [],
+  "limitations": [
+    "The suite uses project-authored templates and a deliberately small seed lexicon.",
+    "Metrics measure this labelled suite and do not establish broad real-world accuracy.",
+    "AI cost is zero because evaluation runs deterministic local checks only."
+  ]
+}
