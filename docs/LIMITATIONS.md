@@ -39,10 +39,12 @@
 
 ## Verification environment
 
-The recorded development host is Windows with Python 3.14 and Node.js 24. Docker,
-GNU Make, Xcode, iOS simulators, and a live Microsoft Word sideload host are not
-available unless a later report says otherwise. Their sources/configuration can be
-validated statically here, but production claims require target-platform runs.
+The recorded development host is Windows with Python 3.14 and Node.js 24. Docker
+Desktop 29.6.1 and Docker Compose v5.2.0 were available for the 2026-07-12
+container smoke test. GNU Make, Xcode, iOS simulators, and a live Microsoft Word
+sideload host are not available unless a later report says otherwise. Their
+sources/configuration can be validated statically here, but production claims
+require target-platform runs.
 
 No HAT or WAT content is bundled. External language resources remain adapters until
 their exact licences and commercial redistribution rights are documented.

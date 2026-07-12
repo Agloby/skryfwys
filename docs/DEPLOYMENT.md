@@ -95,6 +95,15 @@ image rather than running old code against a newer schema.
 
 ## Verification status on this host
 
-The project test/build commands are run on Windows. Docker configuration can be
-checked statically here, but an actual container build requires Docker to be
-installed; see `docs/LIMITATIONS.md` for the recorded release verification result.
+The project test/build commands are run on Windows. On 2026-07-12, Docker Desktop
+29.6.1 and Docker Compose v5.2.0 were available on this host. The root compose
+stack built successfully, both API and web containers reached healthy state, and
+host smoke checks passed for:
+
+- `GET http://127.0.0.1:8000/api/v1/health`
+- `POST http://127.0.0.1:8000/api/v1/check`
+- `GET http://127.0.0.1:4173`
+
+The production compose file also rendered successfully with placeholder
+`SKRYFWYS_DOMAIN`, `SKRYFWYS_ACME_EMAIL`, and `SKRYFWYS_POSTGRES_PASSWORD` values.
+It was not deployed to a public host.

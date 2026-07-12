@@ -70,7 +70,9 @@ When script execution is restricted for the user or machine, `Set-ExecutionPolic
   lockfile when intentionally refreshing dependencies, then run `npm install` from
   the same Node architecture. Never delete unrelated workspace files.
 - **Docker is unavailable:** run local Python/Vite verification and record the
-  container build as unverified; do not claim `docker compose up` passed.
+  container build as unverified. When Docker is available, verify with
+  `docker compose config`, `docker compose build`, `docker compose up -d`, and
+  endpoint smoke checks before claiming container readiness.
 - **UNC npm tests hang or report zero tests:** copy the app directory to a local
   temp folder excluding `node_modules`/`dist`, run `npm ci`, and execute the exact
   test command there. The browser extension can also be tested with
