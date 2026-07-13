@@ -164,7 +164,9 @@ class LanguageEngine:
                 compounds.append(term)
             if key == term:
                 related_terms.extend(str(item) for item in record.get("alternatives", []))
-        sources = [self.lexicon.source_name] if decision.correct or entry or term_entry else []
+        sources = self.lexicon.source_names_for(key)
+        if (entry or term_entry) and self.lexicon.source_name not in sources:
+            sources.insert(0, self.lexicon.source_name)
         if key in custom:
             sources.insert(0, "User personal dictionary")
         return LookupResponse(

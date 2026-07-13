@@ -8,6 +8,7 @@ from services.language_engine import (
     SuggestWordRequest,
 )
 from services.language_engine.lexicon import load_seed_lexicon
+from services.language_engine.models import LookupRequest
 from services.language_engine.spelling import damerau_levenshtein
 
 
@@ -16,6 +17,22 @@ def test_every_misspelling_mapping_has_distinct_accepted_target() -> None:
     for source, target in lexicon.misspellings.items():
         assert source != target
         assert lexicon.contains(target)
+
+
+def test_verified_hunspell_provider_broadens_known_correct_words() -> None:
+    lexicon = load_seed_lexicon()
+
+    assert any("LibreOffice Afrikaans Hunspell" in provider.source_name for provider in lexicon.providers)
+    assert lexicon.contains("grondwetlik")
+    assert "grondwetlik" not in lexicon.words()
+
+
+def test_lookup_reports_hunspell_source_without_inventing_meaning() -> None:
+    response = LanguageEngine().lookup_word(LookupRequest(word="grondwetlik"))
+
+    assert response.spelling_status == "correct"
+    assert response.meaning is None
+    assert any("LibreOffice Afrikaans Hunspell" in source for source in response.sources)
 
 
 @pytest.mark.parametrize(
@@ -43,9 +60,9 @@ def test_case_is_carried_to_suggestion() -> None:
 
 
 def test_diacritic_aware_suggestion() -> None:
-    response = LanguageEngine().suggest_word(SuggestWordRequest(word="more"))
+    response = LanguageEngine().suggest_word(SuggestWordRequest(word="reel"))
     assert response.correct is False
-    assert any(suggestion.text == "môre" for suggestion in response.suggestions[:3])
+    assert any(suggestion.text == "reël" for suggestion in response.suggestions[:3])
 
 
 def test_custom_term_and_ignore_word_override_seed_error() -> None:

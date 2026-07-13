@@ -2,9 +2,12 @@
 
 ## Language quality
 
-- The bundled lexicon is an original functional seed, not an authoritative or
-  comprehensive Afrikaans dictionary. Correct uncommon words can be flagged and
-  many misspellings outside the candidate neighbourhood can be missed.
+- The original Skryfwys lexicon is a functional seed, not an authoritative
+  comprehensive Afrikaans dictionary. A replaceable LibreOffice Afrikaans
+  Hunspell wordlist now reduces false spelling alerts for valid base-form words,
+  but full affix expansion is not implemented yet. Correct inflected forms can
+  still be missed, and many misspellings outside the candidate neighbourhood can
+  be missed.
 - Grammar analysis is a conservative registered rule set, not a parser. Nuanced
   agreement, idiom, word order, double negatives, and compound formation often
   require human judgement.
@@ -46,5 +49,5 @@ sideload host are not available unless a later report says otherwise. Their
 sources/configuration can be validated statically here, but production claims
 require target-platform runs.
 
-No HAT or WAT content is bundled. External language resources remain adapters until
-their exact licences and commercial redistribution rights are documented.
+No HAT or WAT content is bundled. External language resources remain adapters
+unless their exact licences and commercial redistribution rights are documented.

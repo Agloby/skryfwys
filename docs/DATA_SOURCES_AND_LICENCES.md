@@ -1,10 +1,9 @@
 # Data sources and licences
 
-No HAT or WAT content is included. No external dictionary/corpus is downloaded by
-setup, tests, or evaluation. The initial data is intentionally modest until a
-maintainer records a verifiable source URL, exact version, licence text, commercial
-use status, attribution requirement, modification/redistribution conditions, and
-the files derived from it.
+No HAT or WAT content is included. External data is only included after a
+maintainer records a verifiable source URL, exact version, licence text,
+commercial-use status, attribution requirement, modification/redistribution
+conditions, and the files derived from it.
 
 ## Bundled language data
 
@@ -14,6 +13,7 @@ the files derived from it.
 | Construction and quantity-surveying seed terminology | Original project-authored term records in `data/dictionaries` | MIT | Yes | Same as repository | Alternatives are preferences, not claimed dictionary definitions |
 | Deterministic rule metadata/examples | Original project-authored rules in source/data | MIT | Yes | Same as repository | Conservative examples created for this project |
 | Skryfwys evaluation suite | Original project-authored sentences in `data/evaluation` | MIT | Yes | Same as repository | May include artificial errors, each labelled by intended outcome |
+| LibreOffice Afrikaans Hunspell dictionary | `github.com/LibreOffice/dictionaries`, `af_ZA`, pinned commit `da8a7e73fd26a134ad7c6438fa7c310730906b3a` | LGPL-2.1-or-later; licence text in `data/external/hunspell-af-za/COPYING.LESSER-2.1.txt` | Yes, with LGPL conditions | Preserve upstream notices in `README_af_ZA.txt`; credit Translate.org.za and credited authors | Bundled as replaceable `.dic`/`.aff` files; current adapter uses base forms as a spelling allow-list |
 
 User-imported terminology is owned/licensed by the importing user and is never
 redistributed as part of Skryfwys unless the owner separately authorises it.
@@ -43,10 +43,10 @@ package graph and bundled licence notices at release time.
 
 | Resource | Intended use | Status / action before use |
 | --- | --- | --- |
-| Afrikaans Hunspell-compatible dictionary | Broader spelling and affix coverage | Identify the exact repository/release and verify dictionary data redistribution and commercial-use terms; then implement the existing dictionary adapter |
+| Hunspell affix expansion | Broader morphological coverage beyond base forms | Implement and evaluate affix-rule expansion while keeping `.dic`/`.aff` replaceable |
 | LanguageTool Afrikaans | Additional grammar checks | Treat service/software and rule/data licences separately; pin a compatible version and measure false positives |
 | HAT or WAT | Licensed definitions and lexical metadata | Requires a written commercial licence and provider adapter; never scrape or copy entries |
-| Open corpora | Frequency/context ranking | Record corpus provenance, consent, licence, redistribution and privacy suitability before deriving frequencies |
+| Leipzig Corpora Collection Afrikaans | Frequency/context ranking | Prepared only; see `docs/LEIPZIG_FREQUENCY_SUPPLEMENT.md`; do not bundle raw corpus data until a pinned release, checksum, attribution text, denoising process, and evaluation slice are added |
 | Transformer/embedding model | Optional context ranking or rewriting | Record model-card licence, training-data caveats, hosting terms, weights redistribution, and measured benefit |
 
 ## Adding a resource
