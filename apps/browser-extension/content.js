@@ -128,6 +128,13 @@
     panel.style.display = "block";
   }
 
+  function noReadableTextMessage() {
+    if (location.hostname === "docs.google.com") {
+      return "Google Docs versteek die sigbare dokumentkeuse vir gewone uitbreidings. Kopieer die gekose teks en gebruik die volledige Skryfwys-redigeerder, of toets Skryfwys in 'n gewone teksveld.";
+    }
+    return "Kies teks of fokus 'n teksveld voordat jy kontroleer.";
+  }
+
   function positionButton() {
     if (!floatingButton || !activeEditable || !activeEditable.isConnected || !currentOriginAllowed()) {
       if (floatingButton) floatingButton.style.display = "none";
@@ -302,7 +309,7 @@
     }
     const context = captureContext();
     if (!context || !context.checkedText.trim()) {
-      renderStatus("Kies teks of fokus 'n teksveld voordat jy kontroleer.", true);
+      renderStatus(noReadableTextMessage(), true);
       return;
     }
     renderStatus("Kontroleer…", false);
