@@ -26,7 +26,8 @@ for runtime files.
 Back up PostgreSQL with `scripts/backup.ps1` (or `pg_dump -Fc`) and test restores regularly.
 Container volumes are not backups. For a managed platform, deploy the same two Dockerfiles,
 use managed PostgreSQL, terminate HTTPS at the platform load balancer, and retain the
-same-origin `/api` route.
+same-origin `/api` route. `managed-hosting.md` records the provider-neutral service shape
+and environment-variable checklist.
 
 Limitations that require deployment-owner action:
 

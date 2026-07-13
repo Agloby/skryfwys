@@ -69,7 +69,9 @@ client's API base URL at build/deploy time and permit only its exact HTTPS origi
 
 Suitable capabilities are standard OCI containers, health probes, private service
 networking, encrypted database/backups, secret injection, and regional selection;
-the project does not require a particular vendor.
+the project does not require a particular vendor. See
+`infrastructure/managed-hosting.md` for the provider-neutral service contract,
+environment variables, and smoke-test checklist.
 
 ## Backup and restore
 

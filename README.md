@@ -53,6 +53,7 @@ Skryfwys is a privacy-conscious Afrikaans writing assistant built around a deter
 - `npm run build --prefix apps/web`
 - `npm test --prefix apps/browser-extension`
 - `npm test --prefix apps/office-addin`
+- Managed-hosting prep: `infrastructure/managed-hosting.md`
 
 ## Project structure
 
