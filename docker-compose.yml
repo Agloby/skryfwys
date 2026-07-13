@@ -5,7 +5,13 @@ services:
       dockerfile: infrastructure/api.Dockerfile
     environment:
       SKRYFWYS_DATABASE_URL: sqlite:////app/state/skryfwys.db
-      AI_DAILY_BUDGET: "0"
+      AI_PROVIDER: ${AI_PROVIDER:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_BASE_URL: ${AI_BASE_URL:-https://api.openai.com}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      AI_DAILY_BUDGET: ${AI_DAILY_BUDGET:-0}
+      AI_TIMEOUT_SECONDS: ${AI_TIMEOUT_SECONDS:-20}
+      AI_MAX_INPUT_CHARACTERS: ${AI_MAX_INPUT_CHARACTERS:-20000}
     ports:
       - "8000:8000"
     volumes:

@@ -103,6 +103,9 @@ host smoke checks passed for:
 - `GET http://127.0.0.1:8000/api/v1/health`
 - `POST http://127.0.0.1:8000/api/v1/check`
 - `GET http://127.0.0.1:4173`
+- an opt-in `POST http://127.0.0.1:8000/api/v1/rewrite` cloud-AI smoke
+  returned `ai_used=true` with the OpenAI-compatible provider after a local
+  `.env` supplied provider settings and a positive budget
 
 The production compose file also rendered successfully with placeholder
 `SKRYFWYS_DOMAIN`, `SKRYFWYS_ACME_EMAIL`, and `SKRYFWYS_POSTGRES_PASSWORD` values.

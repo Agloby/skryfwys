@@ -81,6 +81,45 @@ def redact_sensitive(text: str) -> RedactedText:
     return RedactedText(redacted, values)
 
 
+def _openai_rewrite_schema() -> dict[str, object]:
+    """Return the strict JSON Schema subset accepted by OpenAI Responses."""
+
+    return {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["rewritten_text", "changes"],
+        "properties": {
+            "rewritten_text": {
+                "type": "string",
+                "description": "The complete rewritten text.",
+            },
+            "changes": {
+                "type": "array",
+                "description": "Specific changes made by the rewrite.",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "required": ["original", "replacement", "explanation_af"],
+                    "properties": {
+                        "original": {
+                            "type": "string",
+                            "description": "Exact source text span that was changed.",
+                        },
+                        "replacement": {
+                            "type": "string",
+                            "description": "Replacement text for the source span.",
+                        },
+                        "explanation_af": {
+                            "type": "string",
+                            "description": "Short Afrikaans explanation of the change.",
+                        },
+                    },
+                },
+            },
+        },
+    }
+
+
 class MockRewriteProvider:
     """Predictable provider for integration and prompt-injection tests."""
 
@@ -130,9 +169,9 @@ class OpenAIResponsesProvider:
         if len(request.text) > self.max_input_characters:
             raise ValueError("Text exceeds AI_MAX_INPUT_CHARACTERS")
         redacted = redact_sensitive(request.text)
-        schema = ModelRewritePayload.model_json_schema()
         payload = {
             "model": self.model,
+            "store": False,
             "input": [
                 {
                     "role": "system",
@@ -156,7 +195,7 @@ class OpenAIResponsesProvider:
                     "type": "json_schema",
                     "name": "skryfwys_rewrite",
                     "strict": True,
-                    "schema": schema,
+                    "schema": _openai_rewrite_schema(),
                 }
             },
         }
@@ -242,7 +281,7 @@ class ModelGateway:
         request: RewriteRequest,
         deterministic: RewriteResponse,
     ) -> RewriteResponse:
-        if request.privacy_mode is not PrivacyMode.CLOUD_AI or self.provider is None:
+        if request.privacy_mode != PrivacyMode.CLOUD_AI or self.provider is None:
             return deterministic
         if len(request.text) > self.max_input_characters:
             return deterministic
