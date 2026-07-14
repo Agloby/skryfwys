@@ -77,3 +77,29 @@ When script execution is restricted for the user or machine, `Set-ExecutionPolic
   temp folder excluding `node_modules`/`dist`, run `npm ci`, and execute the exact
   test command there. The browser extension can also be tested with
   `node --test test/safety.test.cjs` from its own directory.
+
+## Current local workstation status
+
+Verified on 2026-07-14:
+
+- Docker Desktop local stack runs the API on `http://127.0.0.1:8000` and the web
+  app on `http://127.0.0.1:4173`.
+- The unpacked Chrome extension works from
+  `G:\My Drive\Afrikaans AI Writing Assistant\apps\browser-extension` for normal
+  text fields.
+- Word desktop can load the Skryfwys task pane through the trusted shared-folder
+  catalog pointing at `apps\office-addin`.
+- The Office task-pane development server responds on `https://localhost:3001`
+  when started from the Office add-in project.
+
+After a reboot, start Docker Desktop and run:
+
+```powershell
+docker compose up -d
+```
+
+For Word add-in development, also start:
+
+```powershell
+npm run dev --prefix apps/office-addin
+```
