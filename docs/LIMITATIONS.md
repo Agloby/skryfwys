@@ -12,8 +12,10 @@
   agreement, idiom, word order, double negatives, and compound formation often
   require human judgement.
 - Seed frequencies and morphological heuristics are too small to claim commercial
-  assistant accuracy. The evaluation suite is project-authored and useful for
-  regression, but is not an independent representative corpus.
+  assistant accuracy. A small Leipzig Afrikaans Wikipedia frequency table now
+  helps rank suggestions, but it is corpus-derived and filtered for ranking only;
+  it is not an authority on correctness. The evaluation suite is project-authored
+  and useful for regression, but is not an independent representative corpus.
 - Word help cannot provide an authoritative definition unless a future authorised
   lexical adapter supplies one. Generated guidance, if enabled, must be labelled.
 

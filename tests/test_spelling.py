@@ -27,6 +27,13 @@ def test_verified_hunspell_provider_broadens_known_correct_words() -> None:
     assert "grondwetlik" not in lexicon.words()
 
 
+def test_leipzig_frequencies_are_used_for_ranking_not_acceptance() -> None:
+    lexicon = load_seed_lexicon()
+
+    assert lexicon.frequency("die") >= 16197
+    assert not lexicon.contains("wikipedia")
+
+
 def test_lookup_reports_hunspell_source_without_inventing_meaning() -> None:
     response = LanguageEngine().lookup_word(LookupRequest(word="grondwetlik"))
 

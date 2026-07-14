@@ -81,6 +81,7 @@ class SeedLexicon:
     terminology: dict[str, dict[str, Any]]
     source_name: str = "Skryfwys original seed lexicon"
     providers: list[DictionaryProvider] = field(default_factory=list)
+    ranking_frequencies: dict[str, int] = field(default_factory=dict)
     _words: set[str] = field(init=False, repr=False)
 
     def __post_init__(self) -> None:
@@ -100,8 +101,11 @@ class SeedLexicon:
 
     def frequency(self, word: str) -> int:
         key = normalize_for_lookup(word)
+        corpus_frequency = self.ranking_frequencies.get(key, 0)
         if key in self.frequencies:
-            return self.frequencies[key]
+            return max(self.frequencies[key], corpus_frequency)
+        if corpus_frequency:
+            return corpus_frequency
         for provider in self.providers:
             frequency = provider.frequency(key)
             if frequency:
@@ -149,6 +153,31 @@ def load_hunspell_af_za_provider() -> HunspellWordListProvider | None:
     return HunspellWordListProvider(path)
 
 
+def load_leipzig_ranking_frequencies() -> dict[str, int]:
+    """Load cleaned Leipzig frequencies for suggestion ranking only."""
+
+    path = _repository_root() / "data" / "derived" / "leipzig_afrikaans_frequencies.tsv"
+    if not path.exists():
+        return {}
+    frequencies: dict[str, int] = {}
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            if line.startswith("#"):
+                continue
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) != 2:
+                continue
+            word, raw_frequency = parts
+            try:
+                frequency = int(raw_frequency)
+            except ValueError:
+                continue
+            normalized = normalize_for_lookup(word)
+            if normalized and frequency > 0:
+                frequencies[normalized] = frequency
+    return frequencies
+
+
 @lru_cache(maxsize=1)
 def load_seed_lexicon() -> SeedLexicon:
     """Load only the repository's original, documented seed resources."""
@@ -187,4 +216,5 @@ def load_seed_lexicon() -> SeedLexicon:
         },
         terminology=terminology,
         providers=providers,
+        ranking_frequencies=load_leipzig_ranking_frequencies(),
     )

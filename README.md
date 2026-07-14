@@ -7,6 +7,7 @@ Skryfwys is a privacy-conscious Afrikaans writing assistant built around a deter
 - FastAPI backend with health, check, rewrite, lookup, and custom-term endpoints
 - Deterministic Afrikaans spell/style checking with original seed data plus a
   replaceable LGPL LibreOffice Hunspell Afrikaans wordlist
+- Leipzig Afrikaans corpus frequency table for conservative suggestion ranking
 - SQLite-backed personal dictionary support
 - React + Vite web editor for checking text and applying suggestions
 - Manifest V3 browser-extension safety core and Office task-pane foundation

@@ -123,7 +123,7 @@ const sourceRows = [
   ["Skryfwys-konstruksieterminologie", "Oorspronklik vir hierdie projek geskryf", "MIT (projeklisensie)", "Ja", "Nee", "Gebundel"],
   ["Skryfwys-evalueringsinne", "Oorspronklike toetsdata", "MIT (projeklisensie)", "Ja", "Nee", "Gebundel"],
   ["Hunspell Afrikaans", "LibreOffice/dictionaries af_ZA, vasgepen", "LGPL 2.1+", "Ja", "Ja", "Vervangbaar gebundel"],
-  ["Leipzig-frekwensies", "Voorbereide adapterpad; geen korpusdata gebundel nie", "CC BY moet per aflaai vasgepen word", "Ja, met erkenning", "Ja", "Voorberei"],
+  ["Leipzig-frekwensies", "afr_wikipedia_2021_10K, vasgepen en gefiltreer", "CC BY", "Ja", "Ja", "Slegs rangorde"],
   ["LanguageTool Afrikaans", "Adapter beplan na tegniese en lisensiehersiening", "Nie vasgestel nie", "Onbekend", "Onbekend", "Nie gebundel nie"],
   ["HAT / WAT", "Slegs met ’n toekomstige lisensie-ooreenkoms", "Eiendomsregtelik", "Lisensie nodig", "Volgens lisensie", "Nie gebundel nie"],
 ];

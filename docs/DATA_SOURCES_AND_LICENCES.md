@@ -14,6 +14,7 @@ conditions, and the files derived from it.
 | Deterministic rule metadata/examples | Original project-authored rules in source/data | MIT | Yes | Same as repository | Conservative examples created for this project |
 | Skryfwys evaluation suite | Original project-authored sentences in `data/evaluation` | MIT | Yes | Same as repository | May include artificial errors, each labelled by intended outcome |
 | LibreOffice Afrikaans Hunspell dictionary | `github.com/LibreOffice/dictionaries`, `af_ZA`, pinned commit `da8a7e73fd26a134ad7c6438fa7c310730906b3a` | LGPL-2.1-or-later; licence text in `data/external/hunspell-af-za/COPYING.LESSER-2.1.txt` | Yes, with LGPL conditions | Preserve upstream notices in `README_af_ZA.txt`; credit Translate.org.za and credited authors | Bundled as replaceable `.dic`/`.aff` files; current adapter uses base forms as a spelling allow-list |
+| Leipzig Afrikaans Wikipedia corpus frequencies | `afr_wikipedia_2021_10K`, downloaded from `downloads.wortschatz-leipzig.de`, SHA-256 `2B05298E0257592F89CC6F9EAA8BA5F97ED05B4C4DF910D0DB529621D9471859` | CC BY for downloadable text corpora per Wortschatz Leipzig terms | Yes, with attribution for downloadable corpus data | Cite Goldhahn, Eckart and Quasthoff, LREC 2012; credit Wortschatz Leipzig | Bundled raw archive plus derived ranking table; used only for suggestion ranking, not correctness |
 
 User-imported terminology is owned/licensed by the importing user and is never
 redistributed as part of Skryfwys unless the owner separately authorises it.
@@ -46,7 +47,7 @@ package graph and bundled licence notices at release time.
 | Hunspell affix expansion | Broader morphological coverage beyond base forms | Implement and evaluate affix-rule expansion while keeping `.dic`/`.aff` replaceable |
 | LanguageTool Afrikaans | Additional grammar checks | Treat service/software and rule/data licences separately; pin a compatible version and measure false positives |
 | HAT or WAT | Licensed definitions and lexical metadata | Requires a written commercial licence and provider adapter; never scrape or copy entries |
-| Leipzig Corpora Collection Afrikaans | Frequency/context ranking | Prepared only; see `docs/LEIPZIG_FREQUENCY_SUPPLEMENT.md`; do not bundle raw corpus data until a pinned release, checksum, attribution text, denoising process, and evaluation slice are added |
+| Larger Leipzig Corpora Collection Afrikaans releases | Frequency/context ranking | Optional future expansion; pin release, checksum, attribution text, denoising process, and evaluation slice before use |
 | Transformer/embedding model | Optional context ranking or rewriting | Record model-card licence, training-data caveats, hosting terms, weights redistribution, and measured benefit |
 
 ## Adding a resource
