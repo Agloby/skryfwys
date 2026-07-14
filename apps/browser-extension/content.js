@@ -52,6 +52,10 @@
     host = document.createElement("div");
     host.id = "skryfwys-extension-root";
     host.style.all = "initial";
+    host.style.position = "fixed";
+    host.style.inset = "0";
+    host.style.zIndex = "2147483646";
+    host.style.pointerEvents = "none";
     shadow = host.attachShadow({ mode: "closed" });
 
     const style = document.createElement("style");
@@ -61,11 +65,11 @@
       button { font: 600 13px/1.2 system-ui, sans-serif; }
       .sk-button { position: fixed; z-index: 2147483646; width: 38px; height: 38px; border: 2px solid #fff;
         border-radius: 999px; color: #fff; background: #176b5b; box-shadow: 0 3px 14px rgba(0,0,0,.28);
-        cursor: pointer; display: none; }
+        cursor: pointer; display: none; pointer-events: auto; }
       .sk-button:focus-visible, .close:focus-visible, .suggestion:focus-visible { outline: 3px solid #f5bd32; outline-offset: 2px; }
       .panel { position: fixed; z-index: 2147483647; right: 18px; top: 18px; width: min(370px, calc(100vw - 36px));
         max-height: calc(100vh - 36px); overflow: auto; border: 1px solid #c9d8d4; border-radius: 14px;
-        color: #172521; background: #fff; box-shadow: 0 14px 42px rgba(0,0,0,.3); font: 14px/1.45 system-ui, sans-serif; display: none; }
+        color: #172521; background: #fff; box-shadow: 0 14px 42px rgba(0,0,0,.3); font: 14px/1.45 system-ui, sans-serif; display: none; pointer-events: auto; }
       .panel-header { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between;
         padding: 12px 14px; color: #fff; background: #174f46; }
       .panel-header strong { font-size: 16px; }
