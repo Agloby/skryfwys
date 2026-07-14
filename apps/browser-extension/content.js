@@ -7,6 +7,7 @@
 
   let settings = null;
   let activeEditable = null;
+  let lastEditable = null;
   let host = null;
   let shadow = null;
   let floatingButton = null;
@@ -92,9 +93,21 @@
       // Keep the page's editable field focused long enough for the click handler
       // to capture its text.  Otherwise Chrome can focus the shadow-DOM button,
       // trigger focusout, clear activeEditable, and make the click appear inert.
+      if (activeEditable && activeEditable.isConnected) lastEditable = activeEditable;
       event.preventDefault();
+      event.stopPropagation();
     });
-    floatingButton.addEventListener("click", () => checkActive());
+    floatingButton.addEventListener("mousedown", (event) => {
+      if (activeEditable && activeEditable.isConnected) lastEditable = activeEditable;
+      event.preventDefault();
+      event.stopPropagation();
+    });
+    floatingButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const editable = activeEditable && activeEditable.isConnected ? activeEditable : lastEditable;
+      checkActive(editable && editable.isConnected ? editable : null);
+    });
     shadow.append(floatingButton);
 
     panel = document.createElement("section");
@@ -162,8 +175,11 @@
       : (element.textContent || "");
   }
 
-  function captureContext() {
-    const element = activeEditable && activeEditable.isConnected ? activeEditable : editableRoot(document.activeElement);
+  function captureContext(preferredElement = null) {
+    const element = editableRoot(preferredElement)
+      || (activeEditable && activeEditable.isConnected ? activeEditable : null)
+      || (lastEditable && lastEditable.isConnected ? lastEditable : null)
+      || editableRoot(document.activeElement);
     if (element) {
       const fullText = fieldText(element);
       if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
@@ -308,12 +324,12 @@
     panel.style.display = "block";
   }
 
-  async function checkActive() {
+  async function checkActive(preferredElement = null) {
     if (!currentOriginAllowed()) {
       renderStatus("Skryfwys is vir hierdie webwerf afgeskakel.", true);
       return;
     }
-    const context = captureContext();
+    const context = captureContext(preferredElement);
     if (!context || !context.checkedText.trim()) {
       renderStatus(noReadableTextMessage(), true);
       return;
@@ -330,6 +346,7 @@
 
   document.addEventListener("focusin", (event) => {
     activeEditable = editableRoot(event.target);
+    if (activeEditable) lastEditable = activeEditable;
     ensureUi();
     positionButton();
   }, true);
