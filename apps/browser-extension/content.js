@@ -88,6 +88,12 @@
     floatingButton.type = "button";
     floatingButton.textContent = "Sk";
     floatingButton.setAttribute("aria-label", "Kontroleer hierdie teks met Skryfwys");
+    floatingButton.addEventListener("pointerdown", (event) => {
+      // Keep the page's editable field focused long enough for the click handler
+      // to capture its text.  Otherwise Chrome can focus the shadow-DOM button,
+      // trigger focusout, clear activeEditable, and make the click appear inert.
+      event.preventDefault();
+    });
     floatingButton.addEventListener("click", () => checkActive());
     shadow.append(floatingButton);
 
